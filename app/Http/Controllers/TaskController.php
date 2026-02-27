@@ -37,4 +37,9 @@ public function index(){
         $task->delete();
         return response()->json(["msg"=> "Deleted successfully"], 200);
     }
+
+    public function getTaskUser($id){
+        $user = Task :: find($id) -> user;
+        return response()->json($user,200);
+    }
 }
