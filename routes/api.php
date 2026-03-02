@@ -10,12 +10,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Route :: post('/tasks', [TaskController :: class, 'store']);
-// Route :: get('/tasks', [TaskController :: class , 'index']);
-// Route :: put('tasks/{id}', [TaskController :: class, 'update']);
-// Route :: get ('tasks/{id}', [TaskController :: class, 'show']);
-// Route :: delete('tasks/{id}', [TaskController :: class, 'destroy']);
-
 
 Route :: apiResource('tasks', TaskController :: class);
 Route :: get('task/{id}/user', [TaskController :: class , 'getTaskUser']);
@@ -28,3 +22,8 @@ Route :: put('profile/{id}', [ProfileController :: class , 'update']);
 
 Route :: get('user/{id}/profile', [UserController :: class , 'getProfle']);
 Route :: get('user/{id}/tasks', [UserController :: class , 'getUserTasks']);
+
+
+Route :: post('register',[UserController :: class , 'register']);
+Route :: post('login', [UserController :: class , 'login']);
+Route :: post('logout', [UserController :: class , 'logout'])->middleware('auth:sanctum');
